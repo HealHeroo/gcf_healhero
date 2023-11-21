@@ -5,13 +5,14 @@ import (
 	"net/http"
 
 	"github.com/GoogleCloudPlatform/functions-framework-go/functions"
+	"github.com/HealHeroo/be_healhero/module"
 )
 
 func init() {
-	functions.HTTP("HealHeroo", healHeroo_User)
+	functions.HTTP("HealHeroo", healHero_User)
 }
 
-func healHeroo_User(w http.ResponseWriter, r *http.Request) {
+func healHero_User(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "https://healheroo.github.io")
 	// Set CORS headers for the preflight request
 	if r.Method == http.MethodOptions {
