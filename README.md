@@ -20,9 +20,9 @@ Repositori ini berisi proyek Google Cloud Functions untuk aplikasi HealHero.
 ## Struktur Direktori
 
 Repositori ini terdiri dari 10 folder yang mewakili berbagai bagian dari aplikasi HealHero. Pada setiap file function.go memanggil dua baris impor paket, yaitu :
-"github.com/GoogleCloudPlatform/functions-framework-go/functions"
+1. "github.com/GoogleCloudPlatform/functions-framework-go/functions"
 - Paket ini terkait dengan Google Cloud Functions dan menyediakan fungsi-fungsi dan struktur data yang diperlukan untuk menulis fungsi Google Cloud Functions menggunakan Functions Framework for Go
-"github.com/HealHeroo/be_healhero/module"
+2. "github.com/HealHeroo/be_healhero/module"
 - paket ini akan berisi berbagai modul atau fungsi-fungsi yang diperlukan oleh proyek 
 
 
