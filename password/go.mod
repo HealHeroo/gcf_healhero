@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/GoogleCloudPlatform/functions-framework-go v1.8.0
-	github.com/HealHeroo/be_healhero v0.0.5
+	github.com/HealHeroo/be_healhero v0.2.2
 )
 
 require (

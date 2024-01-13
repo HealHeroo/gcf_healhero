@@ -9,20 +9,27 @@ import (
 )
 
 func init() {
-	functions.HTTP("HealHeroo", healHero_User)
+	functions.HTTP("HealHeroo", healHero_Order)
 }
 
-func healHero_User(w http.ResponseWriter, r *http.Request) {
+func healHero_Order(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "https://healhero.my.id")
 	// Set CORS headers for the preflight request
 	if r.Method == http.MethodOptions {
-		w.Header().Set("Access-Control-Allow-Methods", "GET")
+		w.Header().Set("Access-Control-Allow-Methods", "GET,POST,DELETE")
 		w.Header().Set("Access-Control-Allow-Headers", "Content-Type,Authorization,Token")
 		w.Header().Set("Access-Control-Max-Age", "3600")
 		w.WriteHeader(http.StatusNoContent)
 		return
 	}
-	
+	if r.Method == http.MethodPost {
+		fmt.Fprintf(w, module.GCFHandlerInsertPesanan("PASETOPUBLICKEY", "MONGOSTRING", "healhero_db", r))
+		return
+	}
+	if r.Method == http.MethodDelete {
+		fmt.Fprintf(w, module.GCFHandlerDeletePesanan("PASETOPUBLICKEY", "MONGOSTRING", "healhero_db", r))
+		return
+	}
 	// Set CORS headers for the main request.
-	fmt.Fprintf(w, module.GCFHandlerGetUser("PASETOPUBLICKEY", "MONGOSTRING", "healhero_db", r))
+	fmt.Fprintf(w, module.GCFHandlerGetPesanan("PASETOPUBLICKEY", "MONGOSTRING", "healhero_db", r))
 }

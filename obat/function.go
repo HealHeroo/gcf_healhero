@@ -13,13 +13,21 @@ func init() {
 }
 
 func healHero_Obat(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "https://healheroo.github.io")
+	w.Header().Set("Access-Control-Allow-Origin", "https://healhero.my.id")
 	// Set CORS headers for the preflight request
 	if r.Method == http.MethodOptions {
-		w.Header().Set("Access-Control-Allow-Methods", "GET,PUT")
+		w.Header().Set("Access-Control-Allow-Methods", "POST,DELETE,GET,PUT")
 		w.Header().Set("Access-Control-Allow-Headers", "Content-Type,Authorization,Token")
 		w.Header().Set("Access-Control-Max-Age", "3600")
 		w.WriteHeader(http.StatusNoContent)
+		return
+	}
+	if r.Method == http.MethodPost {
+		fmt.Fprintf(w, module.GCFHandlerInsertObat("PASETOPUBLICKEY", "MONGOSTRING", "healhero_db", r))
+		return
+	}
+	if r.Method == http.MethodDelete {
+		fmt.Fprintf(w, module.GCFHandlerDeleteObat("PASETOPUBLICKEY", "MONGOSTRING", "healhero_db", r))
 		return
 	}
 	if r.Method == http.MethodPut {

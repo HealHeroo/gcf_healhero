@@ -13,7 +13,7 @@ func init() {
 }
 
 func healHero_Order(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "https://healheroo.github.io")
+	w.Header().Set("Access-Control-Allow-Origin", "https://healhero.my.id")
 	// Set CORS headers for the preflight request
 	if r.Method == http.MethodOptions {
 		w.Header().Set("Access-Control-Allow-Methods", "GET,POST,DELETE")
@@ -23,7 +23,7 @@ func healHero_Order(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if r.Method == http.MethodPost {
-		fmt.Fprintf(w, module.GCFHandlerInsertObat("PASETOPUBLICKEY", "MONGOSTRING", "healhero_db", r))
+		fmt.Fprintf(w, module.GCFHandlerInsertOrder("PASETOPUBLICKEY", "MONGOSTRING", "healhero_db", r))
 		return
 	}
 	if r.Method == http.MethodDelete {
